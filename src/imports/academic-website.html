@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dr. Andi Wirawan — Website Akademik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: #F5F3EE; color: #0D1B2A; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F5F3EE; }
+::-webkit-scrollbar-thumb { background: #1A6B72; border-radius: 3px; }
+
+/* ===== LAYOUT ===== */
+.container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 60px 0; }
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1A6B72; margin-bottom: 6px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: #0D1B2A; margin-bottom: 28px; }
+.divider { height: 1px; background: #E8E4DC; }
+
+/* ===== TYPOGRAPHY ===== */
+.display { font-family: 'Playfair Display', serif; }
+
+/* ===== BUTTONS ===== */
+.btn { border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; border-radius: 8px; transition: all 0.15s; display: inline-flex; align-items: center; gap: 6px; }
+.btn-primary { background: #1A6B72; color: white; padding: 9px 18px; font-size: 13px; }
+.btn-primary:hover { background: #155a60; }
+.btn-outline { background: none; border: 1.5px solid #1A6B72; color: #1A6B72; padding: 8px 16px; font-size: 13px; }
+.btn-outline:hover { background: #E4F0F1; }
+.btn-danger { background: #FEE2E2; color: #DC2626; padding: 8px 14px; font-size: 12px; }
+.btn-danger:hover { background: #FECACA; }
+.btn-ghost { background: none; color: #4A5568; padding: 7px 13px; font-size: 13px; }
+.btn-ghost:hover { background: #E4F0F1; color: #1A6B72; }
+
+/* ===== TAGS ===== */
+.tag { display: inline-block; background: #E4F0F1; color: #1A6B72; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; margin: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+/* ===== FORM ELEMENTS ===== */
+input, textarea, select { font-family: 'Inter', sans-serif; font-size: 13px; border: 1.5px solid #E8E4DC; border-radius: 8px; padding: 9px 12px; width: 100%; background: #FAFAF8; color: #0D1B2A; outline: none; transition: border 0.15s; }
+input:focus, textarea:focus, select:focus { border-color: #1A6B72; background: white; }
+label.form-label { display: block; font-size: 11px; font-weight: 700; color: #6B7280; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.form-group { margin-bottom: 14px; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes popIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+.fade-in { animation: fadeIn 0.25s ease; }
+
+/* ===== NAVBAR ===== */
+#navbar { position: sticky; top: 0; z-index: 100; background: rgba(245,243,238,0.93); backdrop-filter: blur(10px); border-bottom: 1px solid #E8E4DC; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; flex-wrap: wrap; gap: 8px; }
+.nav-brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px; color: #0D1B2A; white-space: nowrap; cursor: pointer; }
+.nav-links { display: flex; align-items: center; gap: 3px; flex-wrap: wrap; }
+.nav-btn { background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; padding: 7px 12px; border-radius: 8px; color: #4A5568; transition: all 0.15s; }
+.nav-btn:hover { background: #E4F0F1; color: #1A6B72; }
+.nav-btn.active { background: #1A6B72; color: white; }
+.nav-admin-btn { margin-left: 6px; border: 1.5px solid #1A6B72 !important; color: #1A6B72 !important; }
+.nav-admin-btn:hover { background: #E4F0F1 !important; }
+.nav-logout { margin-left: 6px; background: #FEE2E2 !important; color: #DC2626 !important; }
+.nav-logout:hover { background: #FECACA !important; }
+.nav-edit-btn { background: #E4F0F1 !important; color: #1A6B72 !important; font-weight: 600 !important; border: 1.5px solid #B8D8DA !important; }
+.nav-edit-btn:hover { background: #1A6B72 !important; color: white !important; }
+
+/* ===== HERO ===== */
+#hero { background: linear-gradient(135deg, #0D1B2A 0%, #1A3A4A 100%); color: white; padding: 72px 0 52px; }
+.hero-inner { display: flex; gap: 36px; align-items: center; flex-wrap: wrap; }
+.avatar-wrap { position: relative; flex-shrink: 0; }
+.avatar { width: 108px; height: 108px; border-radius: 50%; background: linear-gradient(135deg, #1A6B72, #2A9D8F); display: flex; align-items: center; justify-content: center; font-size: 36px; font-weight: 700; flex-shrink: 0; border: 3px solid rgba(255,255,255,0.15); overflow: hidden; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.avatar-edit-btn { position: absolute; bottom: 0; right: 0; width: 30px; height: 30px; border-radius: 50%; background: #2A9D8F; border: 2px solid #0D1B2A; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: background 0.15s; padding: 0; }
+.avatar-edit-btn:hover { background: #1A6B72; }
+.hero-info { flex: 1; min-width: 220px; }
+.hero-title-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #2A9D8F; margin-bottom: 6px; }
+.hero-name { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.15; margin-bottom: 6px; }
+.hero-dept { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+.hero-bio { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.75); max-width: 540px; margin-bottom: 20px; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.interest-tag { font-size: 11px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(42,157,143,0.4); color: #2A9D8F; background: rgba(42,157,143,0.08); }
+.edit-profile-btn { margin-top: 16px; background: rgba(42,157,143,0.15); border: 1.5px solid rgba(42,157,143,0.4); color: #2A9D8F; padding: 7px 16px; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.15s; display: inline-flex; align-items: center; gap: 6px; }
+.edit-profile-btn:hover { background: rgba(42,157,143,0.25); }
+
+/* ===== STATS BAR ===== */
+#statsbar { background: white; border-bottom: 1px solid #E8E4DC; }
+.stats-inner { display: flex; padding: 0 24px; }
+.stat-item { flex: 1; text-align: center; padding: 20px 10px; }
+.stat-value { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: #1A6B72; }
+.stat-label { font-size: 11px; color: #6B7280; margin-top: 3px; font-weight: 500; }
+
+/* ===== PUBLICATIONS ===== */
+.pub-card { background: white; border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; border-left: 3px solid #1A6B72; transition: box-shadow 0.2s; }
+.pub-card:hover { box-shadow: 0 4px 20px rgba(26,107,114,0.1); }
+.pub-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+.pub-title { font-size: 15px; font-weight: 600; line-height: 1.55; margin-bottom: 6px; color: #0D1B2A; }
+.pub-journal { font-size: 13px; color: #6B7280; font-style: italic; margin-bottom: 10px; }
+.pub-year { font-size: 13px; font-weight: 700; color: #1A6B72; white-space: nowrap; }
+
+/* ===== DOCUMENTS ===== */
+.docs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+.upload-panel { background: white; border-radius: 14px; border: 2px dashed #1A6B72; padding: 28px; margin-bottom: 24px; }
+.upload-title { font-weight: 700; font-size: 15px; margin-bottom: 18px; color: #0D1B2A; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.full-width { grid-column: 1 / -1; }
+.uploading { margin-top: 12px; font-size: 13px; color: #1A6B72; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.spinner { width: 16px; height: 16px; border: 2px solid #1A6B72; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; flex-shrink: 0; }
+.filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.cat-pill { border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; background: #E8E4DC; color: #4A5568; transition: all 0.15s; }
+.cat-pill:hover { background: #E4F0F1; color: #1A6B72; }
+.cat-pill.active { background: #1A6B72 !important; color: white !important; }
+.doc-card { background: white; border-radius: 12px; padding: 18px 20px; margin-bottom: 10px; display: flex; align-items: center; gap: 16px; transition: box-shadow 0.2s; }
+.doc-card:hover { box-shadow: 0 3px 16px rgba(26,107,114,0.1); }
+.doc-icon { font-size: 28px; flex-shrink: 0; }
+.doc-info { flex: 1; min-width: 0; }
+.doc-title { font-weight: 600; font-size: 14px; margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.doc-meta { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; font-size: 11px; color: #9CA3AF; }
+.cat-badge { font-size: 11px; font-weight: 600; background: #E4F0F1; color: #1A6B72; padding: 2px 8px; border-radius: 6px; }
+.doc-desc { font-size: 12px; color: #6B7280; margin-top: 5px; }
+.doc-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.empty-box { text-align: center; padding: 48px 24px; background: white; border-radius: 14px; border: 1.5px dashed #E8E4DC; }
+.empty-icon { font-size: 42px; margin-bottom: 12px; }
+.empty-title { font-weight: 600; font-size: 15px; margin-bottom: 6px; }
+.empty-text { font-size: 13px; color: #9CA3AF; }
+
+/* ===== TEACHING ===== */
+.course-table { background: white; border-radius: 12px; padding: 4px 24px; }
+.course-row { display: flex; align-items: center; padding: 14px 0; gap: 16px; border-bottom: 1px solid #F0EDE7; }
+.course-row:last-child { border-bottom: none; }
+.course-code { font-size: 12px; font-weight: 700; color: #1A6B72; background: #E4F0F1; padding: 4px 10px; border-radius: 6px; min-width: 72px; text-align: center; }
+.course-info { flex: 1; }
+.course-name { font-weight: 600; font-size: 14px; }
+.course-sem { font-size: 12px; color: #9CA3AF; margin-top: 2px; }
+.level-badge { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; background: #E4F0F1; color: #1A6B72; }
+.level-badge.s2 { background: #0D1B2A; color: white; }
+.office-hours { margin-top: 14px; background: #F0EDE7; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #4A5568; }
+.project-card { background: white; border-radius: 12px; padding: 22px 24px; margin-bottom: 14px; }
+.project-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.project-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: #0D1B2A; }
+.project-year { font-size: 12px; color: #6B7280; background: #F5F3EE; padding: 3px 10px; border-radius: 6px; white-space: nowrap; }
+.project-funder { font-size: 12px; font-weight: 600; color: #1A6B72; margin-bottom: 8px; }
+.project-desc { font-size: 14px; color: #4A5568; line-height: 1.65; }
+
+/* ===== CONTACT ===== */
+.contact-grid { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.contact-card { background: white; border-radius: 12px; padding: 18px 20px; flex: 1 1 160px; text-decoration: none; transition: box-shadow 0.2s, transform 0.15s; display: block; }
+.contact-card:hover { box-shadow: 0 4px 16px rgba(26,107,114,0.12); transform: translateY(-2px); }
+.contact-icon { font-size: 22px; margin-bottom: 10px; }
+.contact-label { font-size: 11px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.contact-value { font-size: 13px; color: #1A6B72; font-weight: 500; }
+.contact-cta { background: #0D1B2A; border-radius: 12px; padding: 24px 28px; color: white; }
+.cta-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.cta-text { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+/* ===== FOOTER ===== */
+footer { background: #0D1B2A; color: rgba(255,255,255,0.35); text-align: center; padding: 20px 24px; font-size: 12px; }
+
+/* ===== OVERLAYS & MODALS ===== */
+.overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.72); backdrop-filter: blur(4px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; animation: fadeIn 0.2s ease; }
+.modal { background: #fff; border-radius: 16px; width: 100%; max-width: 640px; max-height: 90vh; display: flex; flex-direction: column; box-shadow: 0 24px 64px rgba(13,27,42,0.25); animation: slideUp 0.25s ease; overflow: hidden; }
+.modal-sm { max-width: 340px; padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); animation: popIn 0.2s ease; }
+.modal-header { display: flex; align-items: flex-start; justify-content: space-between; padding: 24px 28px 20px; border-bottom: 1.5px solid #F0EDE7; }
+.modal-header-label { font-size: 10px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #1A6B72; margin-bottom: 3px; }
+.modal-header-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: #0D1B2A; }
+.close-btn { background: none; border: none; cursor: pointer; font-size: 18px; color: #9CA3AF; padding: 2px 6px; border-radius: 6px; line-height: 1; transition: all 0.15s; }
+.close-btn:hover { background: #F5F3EE; color: #0D1B2A; }
+
+/* Tabs */
+.modal-tabs { display: flex; padding: 0 28px; border-bottom: 1.5px solid #F0EDE7; overflow-x: auto; }
+.modal-tab { background: none; border: none; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: #9CA3AF; padding: 12px 16px; border-bottom: 2.5px solid transparent; margin-bottom: -1.5px; white-space: nowrap; transition: all 0.15s; letter-spacing: 0.02em; }
+.modal-tab:hover { color: #1A6B72; }
+.modal-tab.active { color: #1A6B72; border-bottom-color: #1A6B72; }
+.modal-body { flex: 1; overflow-y: auto; padding: 24px 28px; }
+.modal-footer { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; border-top: 1.5px solid #F0EDE7; gap: 12px; }
+.modal-footer-nav { display: flex; gap: 8px; }
+.modal-footer-actions { display: flex; gap: 8px; }
+
+/* Edit form */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.textarea-field { resize: vertical; min-height: 100px; }
+.char-count { font-size: 11px; color: #9CA3AF; text-align: right; margin-top: 4px; }
+.section-hint { font-size: 12px; color: #6B7280; margin-bottom: 16px; line-height: 1.5; }
+.inner-divider { height: 1px; background: #F0EDE7; margin: 20px 0; }
+
+/* Photo section */
+.photo-section { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
+.avatar-preview { width: 88px; height: 88px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 3px solid #E8E4DC; }
+.avatar-preview img, .avatar-preview .avatar-initials { width: 100%; height: 100%; }
+.avatar-initials { background: linear-gradient(135deg, #1A6B72, #2A9D8F); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; color: white; border-radius: 50%; }
+.drop-zone { flex: 1; min-width: 180px; border: 2px dashed #D1D5DB; border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.15s; background: #FAFAF8; }
+.drop-zone:hover, .drop-zone.active { border-color: #1A6B72; background: #E4F0F1; }
+.drop-icon { font-size: 24px; margin-bottom: 6px; }
+.drop-text { font-size: 13px; font-weight: 600; color: #374151; }
+.drop-hint { font-size: 11px; color: #9CA3AF; margin-top: 2px; }
+.hidden-input { display: none; }
+
+/* Tags edit */
+.tag-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 14px; min-height: 36px; }
+.editable-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 5px 12px 5px 14px; border-radius: 20px; background: #E4F0F1; color: #1A6B72; border: 1.5px solid #B8D8DA; }
+.tag-remove { background: none; border: none; cursor: pointer; font-size: 15px; color: #1A6B72; opacity: 0.5; padding: 0; line-height: 1; display: flex; align-items: center; transition: opacity 0.1s; }
+.tag-remove:hover { opacity: 1; }
+.add-row { display: flex; gap: 8px; }
+.add-input { flex: 1; }
+
+/* Stats grid edit */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+.stat-card { position: relative; background: #F5F3EE; border-radius: 12px; padding: 16px 14px 14px; border: 1.5px solid #E8E4DC; display: flex; flex-direction: column; gap: 6px; transition: border-color 0.15s; }
+.stat-card:hover { border-color: #1A6B72; }
+.stat-value-input { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #1A6B72; border: none; background: transparent; padding: 0; width: 100%; text-align: center; outline: none; border-bottom: 1.5px solid transparent; transition: border-color 0.15s; }
+.stat-value-input:focus { border-bottom-color: #1A6B72; }
+.stat-label-input { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6B7280; border: none; background: transparent; padding: 0; width: 100%; text-align: center; outline: none; border-bottom: 1.5px solid transparent; transition: border-color 0.15s; }
+.stat-label-input:focus { border-bottom-color: #D1D5DB; }
+.stat-remove { position: absolute; top: 6px; right: 6px; background: none; border: none; cursor: pointer; font-size: 11px; color: #D1D5DB; padding: 2px; border-radius: 4px; transition: all 0.15s; line-height: 1; }
+.stat-remove:hover { background: #FEE2E2; color: #DC2626; }
+.add-stat-card { background: none; border: 2px dashed #D1D5DB; border-radius: 12px; padding: 16px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: #9CA3AF; font-size: 12px; font-weight: 600; font-family: 'Inter', sans-serif; transition: all 0.15s; min-height: 90px; }
+.add-stat-card:hover { border-color: #1A6B72; color: #1A6B72; background: #E4F0F1; }
+.add-stat-icon { font-size: 22px; line-height: 1; }
+
+/* Login modal */
+.login-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+.login-subtitle { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+.login-error { font-size: 12px; color: #DC2626; margin-bottom: 12px; }
+.login-actions { display: flex; gap: 10px; margin-bottom: 16px; }
+.login-hint { font-size: 11px; color: #9CA3AF; text-align: center; }
+.login-hint code { background: #F5F3EE; padding: 1px 5px; border-radius: 4px; font-size: 11px; }
+
+/* Delete confirm modal */
+.del-modal { background: white; border-radius: 16px; padding: 32px; width: 300px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+.del-icon { font-size: 40px; margin-bottom: 12px; }
+.del-title { font-weight: 700; font-size: 17px; margin-bottom: 8px; }
+.del-text { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
+.del-actions { display: flex; gap: 10px; }
+
+/* ===== TOAST ===== */
+#toast { position: fixed; top: 20px; right: 20px; z-index: 9999; padding: 12px 20px; border-radius: 10px; font-size: 13px; font-weight: 600; color: white; box-shadow: 0 4px 20px rgba(0,0,0,0.2); max-width: 300px; animation: slideIn 0.2s ease; display: none; }
+#toast.success { background: #1A6B72; }
+#toast.error { background: #DC2626; }
+#toast.info { background: #0D1B2A; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .hero-inner { flex-direction: column; text-align: center; align-items: center; }
+  .hero-bio { max-width: 100%; }
+  .hero-tags { justify-content: center; }
+  .hero-name { font-size: 28px; }
+  .stats-inner { flex-wrap: wrap; }
+  .stat-item { min-width: 50%; padding: 16px 8px; }
+  .section-title { font-size: 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .doc-card { flex-wrap: wrap; }
+  .modal-body { padding: 18px 16px; }
+  .modal-header { padding: 18px 16px 14px; }
+  .modal-tabs { padding: 0 16px; }
+  .modal-footer { padding: 14px 16px; flex-direction: column; align-items: stretch; }
+  .modal-footer-actions { justify-content: flex-end; }
+  .nav-links { gap: 2px; }
+  .nav-btn { font-size: 11px; padding: 5px 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-inner container">
+    <span class="nav-brand" onclick="scrollTo('Tentang')">Dr. Andi Wirawan</span>
+    <div class="nav-links" id="navLinks">
+      <button class="nav-btn active" onclick="scrollTo('Tentang')">Tentang</button>
+      <button class="nav-btn" onclick="scrollTo('Publikasi')">Publikasi</button>
+      <button class="nav-btn" onclick="scrollTo('Dokumen')">Dokumen</button>
+      <button class="nav-btn" onclick="scrollTo('Pengajaran')">Pengajaran</button>
+      <button class="nav-btn" onclick="scrollTo('Proyek')">Proyek</button>
+      <button class="nav-btn" onclick="scrollTo('Kontak')">Kontak</button>
+      <button class="nav-btn nav-admin-btn" id="loginBtn" onclick="openLogin()">🔑 Admin</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<div id="hero">
+  <div class="container hero-inner">
+    <div class="avatar-wrap">
+      <div class="avatar" id="avatar">
+        <span id="avatarInitials">AW</span>
+      </div>
+      <button class="avatar-edit-btn" id="avatarEditBtn" style="display:none" onclick="openEditProfile()" title="Edit profil">✏️</button>
+    </div>
+    <div class="hero-info">
+      <div class="hero-title-label" id="heroTitle">Dosen &amp; Peneliti</div>
+      <h1 class="hero-name" id="heroName">Dr. Andi Wirawan</h1>
+      <div class="hero-dept" id="heroDept">Teknik Informatika · Universitas Indonesia</div>
+      <p class="hero-bio" id="heroBio">Peneliti di bidang Kecerdasan Buatan dan Pemrosesan Bahasa Alami. Fokus pada pengembangan model NLP untuk bahasa-bahasa daerah di Indonesia. Telah menerbitkan lebih dari 40 karya ilmiah di jurnal internasional.</p>
+      <div class="hero-tags" id="heroTags"></div>
+      <button class="edit-profile-btn" id="heroEditBtn" style="display:none" onclick="openEditProfile()">✏️ Edit Profil</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STATS BAR ===== -->
+<div id="statsbar">
+  <div class="container stats-inner" id="statsContainer"></div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="container">
+  <div class="divider" style="margin-top:0"></div>
+
+  <!-- Publikasi -->
+  <section id="Publikasi" class="section">
+    <div class="section-label">Karya Ilmiah</div>
+    <div class="section-title">Publikasi Terbaru</div>
+    <div id="pubList"></div>
+    <a href="#" class="btn btn-outline" style="margin-top:8px;text-decoration:none">Lihat semua publikasi →</a>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Dokumen -->
+  <section id="Dokumen" class="section">
+    <div class="docs-header">
+      <div>
+        <div class="section-label">Unduhan</div>
+        <div class="section-title" style="margin-bottom:0">Dokumen &amp; Materi</div>
+      </div>
+      <button class="btn btn-primary" id="uploadToggleBtn" style="display:none" onclick="toggleUpload()">+ Unggah Dokumen</button>
+    </div>
+
+    <!-- Upload Panel -->
+    <div class="upload-panel fade-in" id="uploadPanel" style="display:none">
+      <div class="upload-title">📤 Unggah Dokumen Baru</div>
+      <div class="form-grid">
+        <div class="form-group full-width">
+          <label class="form-label">Judul Dokumen *</label>
+          <input id="docTitle" placeholder="Contoh: Silabus Kecerdasan Buatan 2025" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Kategori</label>
+          <select id="docCategory">
+            <option>Materi Kuliah</option><option>Silabus</option><option>Publikasi</option>
+            <option>CV &amp; Portofolio</option><option>Panduan</option><option>Lainnya</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Deskripsi (opsional)</label>
+          <input id="docDesc" placeholder="Keterangan singkat..." />
+        </div>
+        <div class="form-group full-width">
+          <label class="form-label">Pilih File (maks. 4.5 MB)</label>
+          <input type="file" id="docFile" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.zip" onchange="handleFileUpload(this)" />
+        </div>
+      </div>
+      <div class="uploading" id="uploadingMsg" style="display:none">
+        <div class="spinner"></div><span id="uploadingText">Membaca file...</span>
+      </div>
+    </div>
+
+    <!-- Filter -->
+    <div class="filter-row" id="filterRow" style="display:none"></div>
+
+    <!-- Doc list -->
+    <div id="docList"></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Pengajaran -->
+  <section id="Pengajaran" class="section">
+    <div class="section-label">Akademik</div>
+    <div class="section-title">Mata Kuliah</div>
+    <div class="course-table" id="courseTable"></div>
+    <div class="office-hours" id="officeHours"></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Proyek -->
+  <section id="Proyek" class="section">
+    <div class="section-label">Riset</div>
+    <div class="section-title">Proyek Penelitian</div>
+    <div id="projectList"></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Kontak -->
+  <section id="Kontak" class="section">
+    <div class="section-label">Hubungi</div>
+    <div class="section-title">Kontak</div>
+    <div class="contact-grid" id="contactGrid"></div>
+    <div class="contact-cta">
+      <div class="cta-title">Ingin berkolaborasi atau bimbingan?</div>
+      <p class="cta-text">Terbuka untuk kolaborasi penelitian, bimbingan skripsi/tesis S1–S2, dan diskusi akademik. Kirim email dengan subjek yang jelas untuk respons lebih cepat.</p>
+    </div>
+  </section>
+</div>
+
+<footer id="siteFooter">© 2025 Dr. Andi Wirawan · Teknik Informatika</footer>
+
+<!-- ===== TOAST ===== -->
+<div id="toast"></div>
+
+<!-- ===== LOGIN MODAL ===== -->
+<div class="overlay" id="loginModal" style="display:none" onclick="overlayClose(event,'loginModal')">
+  <div class="modal modal-sm" onclick="event.stopPropagation()">
+    <div class="login-title">Login Admin</div>
+    <p class="login-subtitle">Masukkan password untuk mengelola dokumen.</p>
+    <input type="password" id="loginPassword" placeholder="Password" style="margin-bottom:6px"
+      onkeydown="if(event.key==='Enter')doLogin()"
+      oninput="document.getElementById('loginError').style.display='none'" />
+    <p class="login-error" id="loginError" style="display:none">Password salah. Coba lagi.</p>
+    <div class="login-actions" style="margin-top:10px">
+      <button class="btn btn-primary" style="flex:1" onclick="doLogin()">Masuk</button>
+      <button class="btn btn-outline" style="flex:1" onclick="closeModal('loginModal')">Batal</button>
+    </div>
+    <p class="login-hint">Password default: <strong>dosen123</strong></p>
+  </div>
+</div>
+
+<!-- ===== DELETE CONFIRM MODAL ===== -->
+<div class="overlay" id="deleteModal" style="display:none" onclick="overlayClose(event,'deleteModal')">
+  <div class="del-modal" onclick="event.stopPropagation()">
+    <div class="del-icon">🗑️</div>
+    <div class="del-title">Hapus Dokumen?</div>
+    <p class="del-text" id="deleteModalText"></p>
+    <div class="del-actions">
+      <button class="btn btn-danger" style="flex:1;padding:10px" onclick="confirmDeleteDoc()">Hapus</button>
+      <button class="btn btn-outline" style="flex:1" onclick="closeModal('deleteModal')">Batal</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== EDIT PROFILE MODAL ===== -->
+<div class="overlay" id="editModal" style="display:none" onclick="overlayClose(event,'editModal')">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div>
+        <div class="modal-header-label">Mode Admin</div>
+        <div class="modal-header-title">Edit Profil</div>
+      </div>
+      <button class="close-btn" onclick="closeModal('editModal')">✕</button>
+    </div>
+    <div class="modal-tabs" id="editTabs">
+      <button class="modal-tab active" onclick="switchTab(0)">Identitas</button>
+      <button class="modal-tab" onclick="switchTab(1)">Foto &amp; Minat</button>
+      <button class="modal-tab" onclick="switchTab(2)">Statistik</button>
+      <button class="modal-tab" onclick="switchTab(3)">Kontak</button>
+    </div>
+    <div class="modal-body" id="editBody">
+      <!-- Tab 0: Identitas -->
+      <div id="tabPane0" class="fade-in">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Nama Lengkap</label><input id="ef_name" /></div>
+          <div class="form-group"><label class="form-label">Gelar / Jabatan</label><input id="ef_title" placeholder="Dosen &amp; Peneliti" /></div>
+        </div>
+        <div class="form-group"><label class="form-label">Departemen &amp; Institusi</label><input id="ef_department" /></div>
+        <div class="form-group">
+          <label class="form-label">Bio</label>
+          <textarea class="textarea-field" id="ef_bio" rows="5" oninput="document.getElementById('bioCount').textContent=this.value.length+' karakter'"></textarea>
+          <div class="char-count" id="bioCount">0 karakter</div>
+        </div>
+      </div>
+      <!-- Tab 1: Foto & Minat -->
+      <div id="tabPane1" style="display:none" class="fade-in">
+        <label class="form-label">Foto Profil</label>
+        <div class="photo-section">
+          <div class="avatar-preview" id="editAvatarPreview"></div>
+          <div class="drop-zone" id="dropZone" onclick="document.getElementById('photoInput').click()"
+            ondragover="event.preventDefault();this.classList.add('active')"
+            ondragleave="this.classList.remove('active')"
+            ondrop="handlePhotoDrop(event)">
+            <div class="drop-icon">🖼️</div>
+            <div class="drop-text">Klik atau seret foto ke sini</div>
+            <div class="drop-hint">JPG, PNG, WebP · Maks 4 MB</div>
+            <input type="file" id="photoInput" accept="image/*" class="hidden-input" onchange="handlePhotoFile(this.files[0])" />
+          </div>
+          <button class="btn btn-danger" id="removePhotoBtn" style="display:none;align-self:center" onclick="removePhoto()">Hapus Foto</button>
+        </div>
+        <div class="inner-divider"></div>
+        <label class="form-label" style="margin-top:8px">Bidang Minat / Keahlian</label>
+        <div class="tag-grid" id="interestTagGrid"></div>
+        <div class="add-row">
+          <input class="add-input" id="newInterestInput" placeholder="Tambah minat baru…"
+            onkeydown="if(event.key==='Enter')addInterest()" />
+          <button class="btn btn-primary" onclick="addInterest()">Tambah</button>
+        </div>
+      </div>
+      <!-- Tab 2: Statistik -->
+      <div id="tabPane2" style="display:none" class="fade-in">
+        <p class="section-hint">Angka-angka yang ditampilkan di bawah hero. Klik nilai untuk mengedit.</p>
+        <div class="stats-grid" id="editStatsGrid"></div>
+      </div>
+      <!-- Tab 3: Kontak -->
+      <div id="tabPane3" style="display:none" class="fade-in">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">✉️ Email Kampus</label><input type="email" id="ef_email" placeholder="nama@institusi.ac.id" /></div>
+          <div class="form-group"><label class="form-label">📚 Google Scholar URL</label><input id="ef_scholar" placeholder="https://scholar.google.com/…" /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">💼 LinkedIn URL</label><input id="ef_linkedin" placeholder="https://linkedin.com/in/…" /></div>
+          <div class="form-group"><label class="form-label">🔗 GitHub URL</label><input id="ef_github" placeholder="https://github.com/…" /></div>
+        </div>
+        <div class="form-group"><label class="form-label">🕐 Jam Konsultasi (Office Hours)</label><input id="ef_officeHours" placeholder="Senin &amp; Rabu, 13.00–15.00 · Ruang …" /></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-footer-nav" id="editFooterNav"></div>
+      <div class="modal-footer-actions">
+        <button class="btn btn-outline" onclick="closeModal('editModal')">Batal</button>
+        <button class="btn btn-primary" onclick="saveProfile()">💾 Simpan Profil</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// KONFIGURASI — Edit sesuai data Anda
+// ============================================================
+const ADMIN_PASSWORD = 'dosen123'
+const PROFILE_KEY = 'aw_profile'
+const DOCS_KEY = 'aw_docs'
+
+const defaultProfile = {
+  name: 'Dr. Andi Wirawan',
+  title: 'Dosen & Peneliti',
+  department: 'Teknik Informatika · Universitas Indonesia',
+  bio: 'Peneliti di bidang Kecerdasan Buatan dan Pemrosesan Bahasa Alami. Fokus pada pengembangan model NLP untuk bahasa-bahasa daerah di Indonesia. Telah menerbitkan lebih dari 40 karya ilmiah di jurnal internasional.',
+  email: 'a.wirawan@ui.ac.id',
+  scholar: 'https://scholar.google.com',
+  linkedin: 'https://linkedin.com/in/andiwirawan',
+  github: 'https://github.com/andiwirawan',
+  officeHours: 'Senin & Rabu, 13.00–15.00 · Ruang 302, Gedung Ilmu Komputer',
+  photo: null,
+  interests: ['Natural Language Processing','Machine Learning','Bahasa Daerah','Deep Learning','Computational Linguistics'],
+  stats: [
+    {label:'Publikasi', value:'42'},
+    {label:'Sitasi', value:'1.2K'},
+    {label:'Proyek Aktif', value:'6'},
+    {label:'Tahun Mengajar', value:'12'},
+  ],
+  publications: [
+    {year:'2024', title:'Low-Resource NLP for Javanese Dialect Identification Using Transformer Models', journal:'Transactions on Asian and Low-Resource Language Processing', tags:['NLP','Deep Learning'], link:'#'},
+    {year:'2023', title:'Cross-Lingual Transfer Learning for Indonesian Regional Languages', journal:'ACL Findings 2023', tags:['Transfer Learning','Multilingual'], link:'#'},
+    {year:'2023', title:'Benchmark Dataset for Sentiment Analysis in Bahasa Sunda', journal:'Language Resources and Evaluation', tags:['Dataset','Sentiment'], link:'#'},
+    {year:'2022', title:'Towards Inclusive AI: Endangered Language Preservation via NLP', journal:'AI & Society Journal', tags:['AI Ethics','NLP'], link:'#'},
+  ],
+  courses: [
+    {code:'IK4201', name:'Kecerdasan Buatan', level:'S1', semester:'Ganjil'},
+    {code:'IK6031', name:'Deep Learning', level:'S2', semester:'Ganjil'},
+    {code:'IK5102', name:'Pemrosesan Bahasa Alami', level:'S1/S2', semester:'Genap'},
+  ],
+  projects: [
+    {title:'NusaNLP: Corpus Bahasa Daerah Nusantara', funder:'Kemdikbudristek', year:'2023–2025', desc:'Membangun korpus terbesar untuk 20 bahasa daerah Indonesia guna melatih model NLP inklusif.'},
+    {title:'IndoBERT Extension for Regional Dialects', funder:'Google Research', year:'2024–2025', desc:'Ekstensi model BERT untuk menangani variasi dialek bahasa Indonesia dan daerah.'},
+  ],
+}
+
+const FILE_ICONS = {
+  'application/pdf':'📄',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document':'📝',
+  'application/msword':'📝',
+  'application/vnd.openxmlformats-officedocument.presentationml.presentation':'📊',
+  'application/vnd.ms-powerpoint':'📊',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':'📈',
+  'text/plain':'📃',
+  default:'📎',
+}
+
+// ============================================================
+// STATE
+// ============================================================
+let profile = loadProfile()
+let documents = loadDocs()
+let isAdmin = false
+let currentTab = 0
+let editForm = {}
+let editPhotoPreview = null
+let deleteTarget = null
+let filterCat = 'Semua'
+
+function loadProfile() {
+  try { const s = localStorage.getItem(PROFILE_KEY); if(s) return {...defaultProfile, ...JSON.parse(s)} } catch(_){}
+  return {...defaultProfile}
+}
+function saveProfileStore() {
+  try { localStorage.setItem(PROFILE_KEY, JSON.stringify(profile)) } catch(_){}
+}
+function loadDocs() {
+  try { const s = localStorage.getItem(DOCS_KEY); if(s) return JSON.parse(s) } catch(_){}
+  return []
+}
+function saveDocs() {
+  try { localStorage.setItem(DOCS_KEY, JSON.stringify(documents)) } catch(_){}
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function render() {
+  renderNavBrand()
+  renderHero()
+  renderStats()
+  renderPublications()
+  renderDocs()
+  renderTeaching()
+  renderProjects()
+  renderContact()
+  renderFooter()
+  renderAdminUI()
+}
+
+function renderNavBrand() {
+  document.querySelector('.nav-brand').textContent = profile.name
+}
+
+function renderHero() {
+  document.getElementById('heroTitle').textContent = profile.title
+  document.getElementById('heroName').textContent = profile.name
+  document.getElementById('heroDept').textContent = profile.department
+  document.getElementById('heroBio').textContent = profile.bio
+
+  const av = document.getElementById('avatar')
+  const initEl = document.getElementById('avatarInitials')
+  if (profile.photo) {
+    initEl.style.display = 'none'
+    let img = av.querySelector('img')
+    if (!img) { img = document.createElement('img'); av.appendChild(img) }
+    img.src = profile.photo; img.alt = profile.name
+  } else {
+    initEl.style.display = ''
+    const img = av.querySelector('img'); if(img) img.remove()
+    initEl.textContent = getInitials(profile.name)
+  }
+
+  const tagsEl = document.getElementById('heroTags')
+  tagsEl.innerHTML = profile.interests.map(i => `<span class="interest-tag">${e(i)}</span>`).join('')
+}
+
+function renderStats() {
+  const c = document.getElementById('statsContainer')
+  c.innerHTML = profile.stats.map((s,i) =>
+    `<div class="stat-item" style="border-right:${i<profile.stats.length-1?'1px solid #E8E4DC':'none'}">
+      <div class="stat-value">${e(s.value)}</div>
+      <div class="stat-label">${e(s.label)}</div>
+    </div>`
+  ).join('')
+}
+
+function renderPublications() {
+  document.getElementById('pubList').innerHTML = profile.publications.map(p =>
+    `<div class="pub-card">
+      <div class="pub-inner">
+        <div>
+          <div class="pub-title">${e(p.title)}</div>
+          <div class="pub-journal">${e(p.journal)}</div>
+          <div>${p.tags.map(t=>`<span class="tag">${e(t)}</span>`).join('')}</div>
+        </div>
+        <div class="pub-year">${e(p.year)}</div>
+      </div>
+    </div>`
+  ).join('')
+}
+
+function renderDocs() {
+  const cats = ['Semua', ...['Materi Kuliah','Silabus','Publikasi','CV & Portofolio','Panduan','Lainnya'].filter(c=>documents.some(d=>d.category===c))]
+  const filterRow = document.getElementById('filterRow')
+  if (documents.length > 0) {
+    filterRow.style.display = ''
+    filterRow.innerHTML = cats.map(c =>
+      `<button class="cat-pill${filterCat===c?' active':''}" onclick="setFilter('${c}')">${e(c)}</button>`
+    ).join('')
+  } else {
+    filterRow.style.display = 'none'
+  }
+
+  const filtered = filterCat === 'Semua' ? documents : documents.filter(d => d.category === filterCat)
+  const list = document.getElementById('docList')
+
+  if (filtered.length === 0) {
+    list.innerHTML = `<div class="empty-box">
+      <div class="empty-icon">📂</div>
+      <div class="empty-title">${documents.length===0?'Belum ada dokumen':'Tidak ada dokumen di kategori ini'}</div>
+      <p class="empty-text">${isAdmin?'Klik "+ Unggah Dokumen" untuk menambahkan.':'Dokumen akan tersedia segera.'}</p>
+    </div>`
+  } else {
+    list.innerHTML = filtered.map(doc =>
+      `<div class="doc-card">
+        <div class="doc-icon">${FILE_ICONS[doc.fileType]||FILE_ICONS.default}</div>
+        <div class="doc-info">
+          <div class="doc-title">${e(doc.title)}</div>
+          <div class="doc-meta">
+            <span class="cat-badge">${e(doc.category)}</span>
+            <span>${e(doc.fileName)}</span>
+            <span>${fmtSize(doc.fileSize)}</span>
+            <span>${fmtDate(doc.uploadedAt)}</span>
+            <span>⬇ ${doc.downloads||0}x</span>
+          </div>
+          ${doc.description?`<p class="doc-desc">${e(doc.description)}</p>`:''}
+        </div>
+        <div class="doc-actions">
+          <button class="btn btn-primary" style="font-size:12px;padding:8px 14px" onclick="downloadDoc('${doc.id}')">⬇ Download</button>
+          ${isAdmin?`<button class="btn btn-danger" onclick="askDelete('${doc.id}')">🗑</button>`:''}
+        </div>
+      </div>`
+    ).join('')
+  }
+}
+
+function renderTeaching() {
+  document.getElementById('courseTable').innerHTML = profile.courses.map((c,i) =>
+    `<div class="course-row" style="border-bottom:${i<profile.courses.length-1?'1px solid #F0EDE7':'none'}">
+      <span class="course-code">${e(c.code)}</span>
+      <div class="course-info">
+        <div class="course-name">${e(c.name)}</div>
+        <div class="course-sem">Semester ${e(c.semester)}</div>
+      </div>
+      <span class="level-badge${c.level==='S2'?' s2':''}">${e(c.level)}</span>
+    </div>`
+  ).join('')
+  document.getElementById('officeHours').innerHTML = `<strong>Office Hours:</strong> ${e(profile.officeHours)}`
+}
+
+function renderProjects() {
+  document.getElementById('projectList').innerHTML = profile.projects.map(p =>
+    `<div class="project-card">
+      <div class="project-header">
+        <div class="project-title">${e(p.title)}</div>
+        <span class="project-year">${e(p.year)}</span>
+      </div>
+      <div class="project-funder">Dana: ${e(p.funder)}</div>
+      <p class="project-desc">${e(p.desc)}</p>
+    </div>`
+  ).join('')
+}
+
+function renderContact() {
+  const links = [
+    {label:'Email Kampus', value:profile.email, icon:'✉️', href:`mailto:${profile.email}`},
+    {label:'Google Scholar', value:'Profil Publikasi →', icon:'📚', href:profile.scholar},
+    {label:'LinkedIn', value:(profile.linkedin||'').replace('https://',''), icon:'💼', href:profile.linkedin},
+    {label:'GitHub', value:(profile.github||'').replace('https://',''), icon:'🔗', href:profile.github},
+  ]
+  document.getElementById('contactGrid').innerHTML = links.map(l =>
+    `<a href="${e(l.href)}" class="contact-card" target="_blank" rel="noopener">
+      <div class="contact-icon">${l.icon}</div>
+      <div class="contact-label">${e(l.label)}</div>
+      <div class="contact-value">${e(l.value)}</div>
+    </a>`
+  ).join('')
+}
+
+function renderFooter() {
+  document.getElementById('siteFooter').textContent =
+    `© ${new Date().getFullYear()} ${profile.name} · ${profile.department}`
+}
+
+function renderAdminUI() {
+  const adminBtns = ['avatarEditBtn','heroEditBtn','uploadToggleBtn']
+  adminBtns.forEach(id => {
+    const el = document.getElementById(id)
+    if (el) el.style.display = isAdmin ? '' : 'none'
+  })
+
+  const navLinks = document.getElementById('navLinks')
+  let adminArea = document.getElementById('navAdminArea')
+  if (adminArea) adminArea.remove()
+
+  const div = document.createElement('div')
+  div.id = 'navAdminArea'
+  div.style.display = 'flex'
+  div.style.alignItems = 'center'
+  div.style.gap = '4px'
+
+  if (isAdmin) {
+    div.innerHTML = `
+      <button class="nav-btn nav-edit-btn" onclick="openEditProfile()">✏️ Edit Profil</button>
+      <button class="nav-btn nav-logout" onclick="doLogout()">Logout</button>
+    `
+    document.getElementById('loginBtn').style.display = 'none'
+  } else {
+    document.getElementById('loginBtn').style.display = ''
+  }
+  navLinks.appendChild(div)
+  renderDocs()
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function scrollTo(id) {
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'))
+  const el = document.getElementById(id)
+  if (el) { el.scrollIntoView({behavior:'smooth'}) }
+}
+
+window.addEventListener('scroll', () => {
+  const ids = ['Tentang','Publikasi','Dokumen','Pengajaran','Proyek','Kontak']
+  for (const id of [...ids].reverse()) {
+    const el = document.getElementById(id) || (id==='Tentang'?document.getElementById('hero'):null)
+    if (el) {
+      const rect = el.getBoundingClientRect()
+      if (rect.top <= 80) {
+        document.querySelectorAll('.nav-btn').forEach(b => {
+          b.classList.toggle('active', b.textContent.trim() === id)
+        })
+        break
+      }
+    }
+  }
+})
+
+// ============================================================
+// LOGIN / LOGOUT
+// ============================================================
+function openLogin() {
+  document.getElementById('loginPassword').value = ''
+  document.getElementById('loginError').style.display = 'none'
+  document.getElementById('loginModal').style.display = 'flex'
+  setTimeout(() => document.getElementById('loginPassword').focus(), 100)
+}
+
+function doLogin() {
+  const pw = document.getElementById('loginPassword').value
+  if (pw === ADMIN_PASSWORD) {
+    isAdmin = true
+    closeModal('loginModal')
+    showToast('Login berhasil sebagai Admin')
+    renderAdminUI()
+  } else {
+    document.getElementById('loginError').style.display = 'block'
+  }
+}
+
+function doLogout() {
+  isAdmin = false
+  showToast('Berhasil logout', 'info')
+  renderAdminUI()
+}
+
+// ============================================================
+// DOCUMENTS
+// ============================================================
+function toggleUpload() {
+  const p = document.getElementById('uploadPanel')
+  const btn = document.getElementById('uploadToggleBtn')
+  if (p.style.display === 'none') {
+    p.style.display = 'block'
+    btn.textContent = '✕ Tutup'
+  } else {
+    p.style.display = 'none'
+    btn.textContent = '+ Unggah Dokumen'
+  }
+}
+
+function setFilter(cat) {
+  filterCat = cat
+  renderDocs()
+}
+
+async function handleFileUpload(input) {
+  const file = input.files[0]
+  if (!file) return
+  const title = document.getElementById('docTitle').value.trim()
+  if (!title) { alert('Isi judul dokumen terlebih dahulu.'); input.value=''; return }
+  if (file.size > 4.5*1024*1024) { alert('File terlalu besar. Maksimal 4.5 MB.'); input.value=''; return }
+
+  const msgEl = document.getElementById('uploadingMsg')
+  const txtEl = document.getElementById('uploadingText')
+  msgEl.style.display = 'flex'; txtEl.textContent = 'Membaca file...'
+
+  try {
+    const base64 = await readFileBase64(file)
+    txtEl.textContent = 'Menyimpan dokumen...'
+    const doc = {
+      id: 'doc_' + Date.now(),
+      title,
+      category: document.getElementById('docCategory').value,
+      description: document.getElementById('docDesc').value,
+      fileName: file.name,
+      fileType: file.type,
+      fileSize: file.size,
+      base64,
+      uploadedAt: new Date().toISOString(),
+      downloads: 0,
+    }
+    documents = [doc, ...documents]
+    saveDocs()
+    document.getElementById('docTitle').value = ''
+    document.getElementById('docDesc').value = ''
+    input.value = ''
+    document.getElementById('uploadPanel').style.display = 'none'
+    document.getElementById('uploadToggleBtn').textContent = '+ Unggah Dokumen'
+    showToast('Dokumen berhasil diunggah!')
+    renderDocs()
+  } catch(err) {
+    alert('Gagal mengunggah: ' + err.message)
+  }
+  msgEl.style.display = 'none'
+}
+
+function downloadDoc(id) {
+  const doc = documents.find(d => d.id === id)
+  if (!doc) return
+  doc.downloads = (doc.downloads||0) + 1
+  saveDocs()
+  const a = document.createElement('a')
+  a.href = doc.base64; a.download = doc.fileName; a.click()
+  renderDocs()
+}
+
+function askDelete(id) {
+  const doc = documents.find(d => d.id === id)
+  if (!doc) return
+  deleteTarget = id
+  document.getElementById('deleteModalText').textContent = `"${doc.title}" akan dihapus permanen.`
+  document.getElementById('deleteModal').style.display = 'flex'
+}
+
+function confirmDeleteDoc() {
+  if (!deleteTarget) return
+  documents = documents.filter(d => d.id !== deleteTarget)
+  saveDocs()
+  deleteTarget = null
+  closeModal('deleteModal')
+  showToast('Dokumen dihapus.', 'info')
+  renderDocs()
+}
+
+// ============================================================
+// EDIT PROFILE MODAL
+// ============================================================
+function openEditProfile() {
+  editForm = JSON.parse(JSON.stringify(profile))
+  editPhotoPreview = profile.photo || null
+  currentTab = 0
+
+  // Fill fields
+  document.getElementById('ef_name').value = editForm.name
+  document.getElementById('ef_title').value = editForm.title
+  document.getElementById('ef_department').value = editForm.department
+  document.getElementById('ef_bio').value = editForm.bio
+  document.getElementById('bioCount').textContent = editForm.bio.length + ' karakter'
+  document.getElementById('ef_email').value = editForm.email
+  document.getElementById('ef_scholar').value = editForm.scholar
+  document.getElementById('ef_linkedin').value = editForm.linkedin
+  document.getElementById('ef_github').value = editForm.github
+  document.getElementById('ef_officeHours').value = editForm.officeHours
+
+  renderEditPhoto()
+  renderEditInterests()
+  renderEditStats()
+  renderEditFooterNav()
+  switchTab(0)
+
+  document.getElementById('editModal').style.display = 'flex'
+}
+
+function switchTab(n) {
+  for(let i=0;i<4;i++) {
+    const pane = document.getElementById('tabPane'+i)
+    const btn = document.querySelectorAll('.modal-tab')[i]
+    pane.style.display = i===n ? '' : 'none'
+    btn.classList.toggle('active', i===n)
+  }
+  currentTab = n
+  renderEditFooterNav()
+}
+
+function renderEditFooterNav() {
+  const nav = document.getElementById('editFooterNav')
+  let html = ''
+  if (currentTab > 0) html += `<button class="btn btn-outline" onclick="switchTab(${currentTab-1})">← Sebelumnya</button>`
+  if (currentTab < 3) html += `<button class="btn btn-outline" onclick="switchTab(${currentTab+1})">Berikutnya →</button>`
+  nav.innerHTML = html
+}
+
+function renderEditPhoto() {
+  const prev = document.getElementById('editAvatarPreview')
+  const removeBtn = document.getElementById('removePhotoBtn')
+  if (editPhotoPreview) {
+    prev.innerHTML = `<img src="${editPhotoPreview}" alt="Foto profil" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+    removeBtn.style.display = ''
+  } else {
+    const initials = getInitials(editForm.name)
+    prev.innerHTML = `<div class="avatar-initials">${initials}</div>`
+    removeBtn.style.display = 'none'
+  }
+}
+
+function renderEditInterests() {
+  document.getElementById('interestTagGrid').innerHTML = editForm.interests.map(tag =>
+    `<span class="editable-tag">${e(tag)}<button class="tag-remove" onclick="removeInterest('${e(tag)}')">×</button></span>`
+  ).join('')
+}
+
+function renderEditStats() {
+  const grid = document.getElementById('editStatsGrid')
+  grid.innerHTML = editForm.stats.map((s,i) =>
+    `<div class="stat-card">
+      <input class="stat-value-input" value="${e(s.value)}" placeholder="42" oninput="editForm.stats[${i}].value=this.value" />
+      <input class="stat-label-input" value="${e(s.label)}" placeholder="Label" oninput="editForm.stats[${i}].label=this.value" />
+      <button class="stat-remove" onclick="removeStat(${i})" title="Hapus">✕</button>
+    </div>`
+  ).join('') +
+  `<button class="add-stat-card" onclick="addStat()">
+    <span class="add-stat-icon">＋</span><span>Tambah Statistik</span>
+  </button>`
+}
+
+function handlePhotoFile(file) {
+  if (!file || !file.type.startsWith('image/')) return
+  const reader = new FileReader()
+  reader.onload = e => {
+    editPhotoPreview = e.target.result
+    editForm.photo = e.target.result
+    renderEditPhoto()
+  }
+  reader.readAsDataURL(file)
+}
+
+function handlePhotoDrop(ev) {
+  ev.preventDefault()
+  document.getElementById('dropZone').classList.remove('active')
+  handlePhotoFile(ev.dataTransfer.files[0])
+}
+
+function removePhoto() {
+  editPhotoPreview = null
+  editForm.photo = null
+  renderEditPhoto()
+}
+
+function addInterest() {
+  const inp = document.getElementById('newInterestInput')
+  const val = inp.value.trim()
+  if (val && !editForm.interests.includes(val)) {
+    editForm.interests.push(val)
+    renderEditInterests()
+  }
+  inp.value = ''
+}
+
+function removeInterest(tag) {
+  editForm.interests = editForm.interests.filter(i => i !== tag)
+  renderEditInterests()
+}
+
+function addStat() {
+  editForm.stats.push({label:'Label Baru', value:'0'})
+  renderEditStats()
+}
+
+function removeStat(idx) {
+  editForm.stats.splice(idx, 1)
+  renderEditStats()
+}
+
+function saveProfile() {
+  // Collect live field values
+  editForm.name = document.getElementById('ef_name').value
+  editForm.title = document.getElementById('ef_title').value
+  editForm.department = document.getElementById('ef_department').value
+  editForm.bio = document.getElementById('ef_bio').value
+  editForm.email = document.getElementById('ef_email').value
+  editForm.scholar = document.getElementById('ef_scholar').value
+  editForm.linkedin = document.getElementById('ef_linkedin').value
+  editForm.github = document.getElementById('ef_github').value
+  editForm.officeHours = document.getElementById('ef_officeHours').value
+
+  profile = {...editForm}
+  saveProfileStore()
+  closeModal('editModal')
+  showToast('Profil berhasil disimpan! ✨')
+  render()
+}
+
+// ============================================================
+// HELPERS
+// ============================================================
+function getInitials(name) {
+  return name.split(' ').filter(w=>!w.startsWith('Dr')).slice(0,2).map(w=>w[0]).join('') || 'AW'
+}
+
+function e(str) {
+  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+}
+
+function fmtSize(bytes) {
+  if (bytes < 1024) return bytes + ' B'
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB'
+  return (bytes/(1024*1024)).toFixed(1) + ' MB'
+}
+
+function fmtDate(iso) {
+  return new Date(iso).toLocaleDateString('id-ID', {day:'numeric', month:'short', year:'numeric'})
+}
+
+function readFileBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader()
+    r.onload = () => res(r.result)
+    r.onerror = () => rej(new Error('Gagal membaca file.'))
+    r.readAsDataURL(file)
+  })
+}
+
+// Toast
+let toastTimer
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast')
+  t.textContent = msg
+  t.className = type
+  t.style.display = 'block'
+  clearTimeout(toastTimer)
+  toastTimer = setTimeout(() => t.style.display = 'none', 3000)
+}
+
+// Modal helpers
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none'
+}
+function overlayClose(e, id) {
+  if (e.target === document.getElementById(id)) closeModal(id)
+}
+
+// Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    ['loginModal','editModal','deleteModal'].forEach(id => closeModal(id))
+  }
+})
+
+// ============================================================
+// INIT
+// ============================================================
+render()
+</script>
+</body>
+</html>
